@@ -1,0 +1,43 @@
+
+// .axis path,
+// .axis line {
+//     fill:none;
+//     stroke: #b2b2b2;
+//     shape-rendering: crispEdges;
+// }
+// .axis{
+//     path{
+//         fill:none;
+//         stroke: #000;
+//         shape-rendering: crispEdges;
+
+//     }
+//     line{
+//         fill:none;
+//         stroke: #000;
+//         shape-rendering: crispEdges;
+
+//     }
+// }
+
+.clearfix:after{
+    clear: both;
+}
+.chart-container{
+    margin-left: 30px;
+    margin-right: 30px;
+    position: relative;
+}
+.dot{
+    stroke: #b2b2b2;
+}
+
+.data-tip {
+    background-color: #b2b2b2;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.card-header{
+    background-color: #E5EBEE;
+}
