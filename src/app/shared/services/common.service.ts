@@ -7,7 +7,8 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class CommonService {
-    private urlEndPoint:string = "http://localhost:5000/api";
+    //private urlEndPoint:string = "http://localhost:5000/api";
+    private urlEndPoint:string = "https://sparklersapi.herokuapp.com/api";
 
     constructor(private http: Http) { }
 
