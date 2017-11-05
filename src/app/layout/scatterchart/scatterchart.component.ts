@@ -135,13 +135,15 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
             .attr("r",8)
             .attr("cx",function(d){return x(d.value);})
             .attr("cy",function(d){return x(d.consequence);})
-            .style("fill",function(d) { return color(d.answer);})
+            .style("fill",function(d) {return color(d.answer);})
             .style("stroke",function(d) { return color(d.answer);})
+            .style('opacity', .5)
             .style("stroke-width","1px")
             .on("mouseover",function(d){
+                d3.select(this).attr("r", 10).style('opacity', 1);
                 tooltip.transition()
                 .duration(100)		
-                .style('opacity', .9)
+                .style('opacity', 1)
                 .style('background-color', "#b2b2b2")
                 .style('border-radius', "5px")
                 .style('padding', "5px")
@@ -150,6 +152,7 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
                 .style('top', `${d3.event.pageY - 18}px`);
             })
             .on("mouseout",function(d){
+                d3.select(this).attr("r",8).style('opacity', 0.5);;
                 tooltip.transition()		
                 .duration(400)		
                 .style('opacity', 0);	
@@ -163,5 +166,20 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
             // .attr("dy",".71em")
             // .attr("text-anchor","end")
             // .text("value");   
+
+            //
+            svg.selectAll("path")
+            .style("stroke","#b2b2b2")
+            .style("stroke-width","1px");
+
+            svg.selectAll(".tick")
+            .style("stroke","#b2b2b2")
+            .style("stroke-width","1px");
+
+            svg.selectAll("text")
+            .style("font-size","0.9rem");
+
+            svg.selectAll("text")
+            .style("font-size","0.9rem");
     }
 }

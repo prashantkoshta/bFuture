@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatTableModule} from '@angular/material';
+//import {CdkTableModule} from '@angular/cdk';
+
 import {
     NgbCarouselModule,
     NgbAlertModule
@@ -22,6 +25,8 @@ import { StatModule } from '../../shared';
         NgbAlertModule.forRoot(),
         DashboardRoutingModule,
         StatModule,
+        MatTableModule
+       // CdkTableModule
     ],
     declarations: [
         DashboardComponent,

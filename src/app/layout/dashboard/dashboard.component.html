@@ -44,7 +44,41 @@
                     Customer Details
                 </div>
                 <div class="card-block table-responsive">
-                    <table class="table">
+                        <mat-table #table [dataSource]="dataSource">
+                                
+                                    <!--- Note that these columns can be defined in any order.
+                                          The actual rendered columns are set as a property on the row definition" -->
+                                
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="customer_id">
+                                      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+                                      <mat-cell *matCellDef="let element"> 
+                                            <a [routerLink]="['/charts',element.customer_id]">{{element.customer_id}}</a>
+                                        </mat-cell>
+                                    </ng-container>
+                                
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="customer_name">
+                                      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                                      <mat-cell *matCellDef="let element"> {{element.customer_name}} </mat-cell>
+                                    </ng-container>
+                                
+                                    <!-- Weight Column -->
+                                    <ng-container matColumnDef="zipcode">
+                                      <mat-header-cell *matHeaderCellDef> zipcode </mat-header-cell>
+                                      <mat-cell *matCellDef="let element"> {{element.zipcode}} </mat-cell>
+                                    </ng-container>
+                                
+                                    <!-- Color Column -->
+                                    <ng-container matColumnDef="avg_proability">
+                                      <mat-header-cell *matHeaderCellDef> Avg. Proability </mat-header-cell>
+                                      <mat-cell *matCellDef="let element"> {{element.avg_proability}} </mat-cell>
+                                    </ng-container>
+                                
+                                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                  </mat-table>
+                    <!-- <table class="table">
                         <thead>
                         <tr>
                             <th>Id</th>
@@ -60,26 +94,9 @@
                                     <td>{{item.zipcode}}</td>
                                     <td>{{item.avg_proability}}</td>
                             </tr>
-                        <!-- <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr> -->
+                       
                         </tbody>
-                    </table>
+                    </table> -->
                 </div>
             </div>
         </div>
