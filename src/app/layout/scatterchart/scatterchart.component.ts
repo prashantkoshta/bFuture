@@ -61,9 +61,11 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
 
    
     private drawChart(data:any):void{
+        var ref = this;
         this.chartData = data;
         d3.select("#scatter-plot").selectAll("svg > *").remove();
         d3.selectAll(".tooltip").remove();
+
 
         var margin = {
             top:30,
@@ -77,7 +79,8 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
         var x = d3.scaleLinear().range([0,width]);
         var y = d3.scaleLinear().range([height,0]);
 
-        var color = d3.scaleOrdinal(d3.schemeCategory10);//range();
+        var color = d3.scaleOrdinal(d3.schemeCategory20);//range();
+        //var color = d3.scaleOrdinal().domain(d3.extent(data, function (d) { return d.answer; })).range();
 
         x.domain([0,d3.max(data,function(d){return d.value;})]);
         y.domain([0,d3.max(data,function(d){return d.consequence;})]);
@@ -102,7 +105,10 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
         svg.append("g")
             .attr("class","x axis")
             .attr("transform","translate(0,"+height+")")
-            .call(d3.axisBottom(x))
+            .call(d3.axisBottom(x).tickFormat(function(d,i){
+                console.log(">>",data[i])
+                return (data[i])?data[i].value_name:"";
+            }))
             .style("stroke","#b2b2b2")
             .style("stroke-width","1px")
             .append("text")
@@ -115,7 +121,9 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
         //y-axis
         svg.append("g")
             .attr("class","y axis")
-            .call(d3.axisLeft(y))
+            .call(d3.axisLeft(y).tickFormat(function(d,i){
+                return (data[i])?data[i].consequence_name:"";
+            }))
             .style("stroke","#b2b2b2")
             .style("stroke-width","1px")
             .append("text")
