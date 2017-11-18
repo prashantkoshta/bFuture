@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "npm run build && node server.js",
     "start1": "ng serve --ec true --port 4201",
     "build": "ng build --prod",
     "test": "ng test",

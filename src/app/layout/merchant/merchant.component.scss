@@ -15,19 +15,19 @@ $cols-index: 0 1 2 3;
     max-height: 500px;
     $table_width:0px;
     @for $i from 1 through length($cols-index){
-        @debug $i;
+        // @debug $i;
         $cw: nth($cols-width, $i);
         $cellid: nth($colslist, $i);
         $table_width:$table_width+$cw;
         .mat-header-row{
             border-color:rgba(0, 0, 0, 0.125);
-            @debug #{$cellid};
+            // @debug #{$cellid};
             .cdk-column-#{$cellid}{
                 min-width: $cw;
                 max-width: $cw;
             }
         }
-        @debug $cellid;
+        // @debug $cellid;
         // .mat-column-#{$cellid} {
         //     min-width: $cw;
         // }
