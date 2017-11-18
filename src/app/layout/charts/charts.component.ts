@@ -11,6 +11,7 @@ import { CommonService } from "../../shared/services/common.service";
 })
 export class ChartsComponent implements OnInit {
     public boolShow:boolean = false;
+    public visiblePopup:boolean = false;
     // bar chart
     public barChartOptions: any = {
         scaleShowVerticalLines: false,
@@ -94,7 +95,8 @@ export class ChartsComponent implements OnInit {
     public chartClicked(e: any): void {
         // console.log(e.active[0]._index);
         // console.log(e);
-        this.router.navigate(['scatterchart']);
+        //this.router.navigate(['scatterchart']);
+        this.triggerPopup(true);
     }
 
     public chartHovered(e: any): void {
@@ -150,5 +152,9 @@ export class ChartsComponent implements OnInit {
            ref.barChartData = value["data"];
            ref.boolShow = true;
         });
+    }
+    
+    public triggerPopup(bool):void{
+        this.visiblePopup =bool;
     }
 }

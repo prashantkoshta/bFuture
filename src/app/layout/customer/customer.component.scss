@@ -1,0 +1,141 @@
+.card-header{
+    background-color: #E5EBEE;
+}
+
+.selectbox{
+    margin-top:-5px;
+}
+
+
+$colslist: Cluster id Name Age AvgBal Score Status Hashouse Sex Dependents AvgPayin AvgExp Fashion Travel Health Entertainment Food Electronic Sports Grossary;
+$cols-width: 100px 80px 150px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 150px 150px 100px 100px;
+$cols-index: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18;
+// [
+//     "Cluster",
+//     "id",
+//     "Name",
+//     "Age",
+//     "AvgBal",
+//     "Score",
+//     "Status",
+//     "Hashouse",
+//     "Sex",
+//     "Dependents",
+//     "AvgPayin",
+//     "AvgExp",
+//     "Fashion",
+//     "Travel",
+//     "Health",
+//     "Entertainment",
+//     "Food",
+//     "Electronic",
+//     "Sports",
+//     "Grossary"
+//     ];
+
+
+.mat-table {
+    overflow: scroll;
+    max-height: 500px;
+    $table_width:0px;
+    @for $i from 1 through length($cols-index){
+        @debug $i;
+        $cw: nth($cols-width, $i);
+        $cellid: nth($colslist, $i);
+        $table_width:$table_width+$cw;
+        .mat-header-row{
+            border-color:rgba(0, 0, 0, 0.125);
+            @debug #{$cellid};
+            .cdk-column-#{$cellid}{
+                min-width: $cw;
+                max-width: $cw;
+            }
+        }
+        @debug $cellid;
+        // .mat-column-#{$cellid} {
+        //     min-width: $cw;
+        // }
+        .mat-row{
+            border-color: #eceeef;
+            .cdk-column-#{$cellid}{
+                min-width: $cw;
+                max-width: $cw;
+            }
+        }
+    }
+    @debug $table_width;
+    width:$table_width+100px;
+    .mat-row{
+        .mat-cell{
+            word-break:break-all;
+            word-wrap: normal;
+        }
+    }
+}
+
+// @each $current-color in $colors-list {
+//     $i: index($colors-list, $current-color);
+//     .stuff-#{$i} { 
+//         color: $current-color;
+//     }
+// }
+
+// .mat-table {
+//     $colCount:13;
+//     overflow: scroll;
+//     max-height: 500px;
+//     width:$colCount*300px;
+//     .mat-header-row{
+//         border-color:rgba(0, 0, 0, 0.125);
+//         &:first-of-type {
+//             width: 10px;
+//         }
+//         &:nth-child(n){
+//             min-width: 300px;
+//         }
+//         &:last-of-type {
+//             min-width: 300px;
+//         }
+//         &:nth-child(2){
+//             min-width: 400px;
+//         }
+//         .mat-header-cell{
+//             word-break:normal;
+//             word-wrap: normal;
+//         }
+//     }
+
+//     // this for mat-row
+//     @debug n;
+    
+//     &:nth-child(n){
+//         width: 10px;
+//     }
+//     &:last-of-type {
+//         min-width: 300px;
+//     }
+//     &:nth-child(2){
+//         min-width: 400px;
+//     }
+//     .mat-row{
+//         border-color: #eceeef;
+        
+//         .mat-cell{
+//             word-break:normal;
+//             word-wrap: normal;
+//         }
+//     }
+
+//     // .cdk-column-customer_id {
+//     //     flex: 0 0 10%;
+//     // }
+//     // .cdk-column-customer_name {
+//     //     flex: 0 0 40%;
+//     // }
+//     // .cdk-column-zipcode {
+//     //     flex: 0 0 25%;
+//     // }
+//     // .cdk-column-avg_proability {
+//     //     flex: 0 0 25%;
+//     // }
+// }

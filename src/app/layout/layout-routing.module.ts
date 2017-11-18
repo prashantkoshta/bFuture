@@ -6,9 +6,11 @@ const routes: Routes = [
     {
         path: '', component: LayoutComponent,
         children: [
-            { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-            { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
-            { path: 'scatterchart', loadChildren: './scatterchart/scatterchart.module#ScatterChartModule' },
+            { path: 'merchant', loadChildren: './merchant/merchant.module#MerchantModule' },
+            { path: 'customer', loadChildren: './customer/customer.module#CustomerModule' },
+            { path: 'customerpreference', loadChildren: './customerpreference/customerpreference.module#CustomerPreferenceModule' },
+            { path: 'customergroup', loadChildren: './scatterchart/scatterchart.module#ScatterChartModule' },
+            { path: 'offers', loadChildren: './offers/offers.module#OffersModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
             { path: 'forms', loadChildren: './form/form.module#FormModule' },
             { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },

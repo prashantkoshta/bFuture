@@ -1,0 +1,60 @@
+<div [@routerTransition]>
+    <!-- <h2 class="text-muted">Dashboard <small>Statistics Overview</small></h2> -->
+    <div class="row">
+        <div class="col-md-2">
+            <form role="form" onsubmit="return false">
+                <fieldset class="form-group">
+                    <label>Merchant Name </label>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-2">
+            <form role="form">
+                    <fieldset class="form-group">
+                        <select #selGroup (change)="onGroupSelect(selGroup.id)" class="selectbox form-control">
+                            <option *ngFor="let item of listOfMerchant" [value]="item.id">{{item.id}}-{{item.Name}}</option>
+                        </select>
+                    </fieldset>
+                </form>
+        </div>
+        <div class="col-md-8"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Pie Chart
+                </div>
+                <div class="card-body">
+                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Pie Chart
+                </div>
+                <div class="card-body">
+                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Pie Chart
+                </div>
+                <div class="card-body">
+                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+<div [@routerTransition]>
+    <!-- <h2 class="text-muted">Dashboard <small>Statistics Overview</small></h2> -->
+    <div class="row">
+        <div class="col-lg-2 col-md-4 col-xs-12">
+            <form role="form">
+                <fieldset class="form-group">
+                    <label>Show Customer by group :</label>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-lg-4 col-md-4 col-xs-12">
+            <form role="form">
+                <fieldset class="form-group">
+                    <select #selGroup (change)="onGroupSelect(selGroup.value)" class="selectbox form-control">
+                        <option *ngFor="let item of listProduct" [value]="item.value">{{item.name}}</option>
+                    </select>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-lg-6 col-md-4 col-xs-12"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    Customer Details
+                </div>
+                <div class="card-block table-responsive">
+                    <mat-table #table [dataSource]="dataSource">
+
+
+                        <ng-container matColumnDef="Cluster">
+                            <mat-header-cell *matHeaderCellDef> Group </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Cluster}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="id">
+                            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <a [routerLink]="['/customerpreference',element.id]">{{element.id}}</a>
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Name">
+                            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Age">
+                            <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Age}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="AvgBal">
+                            <mat-header-cell *matHeaderCellDef> AvgBal </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.AvgBal}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Score">
+                            <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Score}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Status">
+                            <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Status}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Hashouse">
+                            <mat-header-cell *matHeaderCellDef> Hashouse </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Hashouse}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Sex">
+                            <mat-header-cell *matHeaderCellDef> Sex </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Sex}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Dependents">
+                            <mat-header-cell *matHeaderCellDef> Dependents </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Dependents}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="AvgPayin">
+                            <mat-header-cell *matHeaderCellDef> AvgPayin </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.AvgPayin}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="AvgExp">
+                            <mat-header-cell *matHeaderCellDef> AvgExp </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.AvgExp}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Fashion">
+                            <mat-header-cell *matHeaderCellDef> Fashion </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Fashion}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Travel">
+                            <mat-header-cell *matHeaderCellDef> Travel </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Travel}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Health">
+                            <mat-header-cell *matHeaderCellDef> Health </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Health}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Entertainment">
+                            <mat-header-cell *matHeaderCellDef> Entertainment </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Entertainment}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Food">
+                            <mat-header-cell *matHeaderCellDef> Food </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Food}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Electronic">
+                            <mat-header-cell *matHeaderCellDef> Electronic </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Electronic}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Sports">
+                            <mat-header-cell *matHeaderCellDef> Sports </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Sports}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Grossary">
+                            <mat-header-cell *matHeaderCellDef> Grossary </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Grossary}} </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

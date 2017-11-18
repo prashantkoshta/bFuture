@@ -1,6 +1,12 @@
 <div [@routerTransition]>
     <!-- <app-page-header [heading]="'Charts'" [icon]="'fa-bar-chart-o'"></app-page-header> -->
-    <div class="row">
+
+   
+
+        <!-- </div>
+        </div> -->
+
+        <div class="row">
             <div class="col-md-1">
                 <form role="form" onsubmit="return false">
                     <fieldset class="form-group">
@@ -12,33 +18,38 @@
             </div>
             <div class="col-md-2">
                 <form role="form" onsubmit="return false">
-                        <div class="form-group input-group">
-                                <input #inputCustomer type="text" class="form-control" (keyup.enter)= "onSubmitCustomerId(inputCustomer.value)" [value]="inVal">
-                                <span class="input-group-btn"><button (click)="onSubmitCustomerId(inputCustomer.value)" class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button></span>
-                        </div>
+                    <div class="form-group input-group">
+                        <input #inputCustomer type="text" class="form-control" (keyup.enter)="onSubmitCustomerId(inputCustomer.value)" [value]="inVal">
+                        <span class="input-group-btn">
+                            <button (click)="onSubmitCustomerId(inputCustomer.value)" class="btn btn-secondary" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
                 </form>
             </div>
             <div class="col-md-9"></div>
         </div>
-    <div class="row">
-        <div class="col col-sm-12">
-            <div class="card mb-12">
-                <ng-template [ngIf]="boolShow">
-                    <div class="card-header">
-                        Product Analysis of Customer
-                    </div>
-                
-                    <div class="card-block" >
-                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+        <div class="row">
+            <div class="col col-sm-12">
+                <div class="card mb-12">
+                    <ng-template [ngIf]="boolShow">
+                        <div class="card-header">
+                            Product Analysis of Customer
+                        </div>
+
+                        <div class="card-block">
+                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+                                [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
                             </canvas>
-                    </div>
-                </ng-template>
-                <!-- <div class="card-footer">
+                        </div>
+                    </ng-template>
+                    <!-- <div class="card-footer">
                     <button class="btn btn-info btn-sm" (click)="randomize()">Update</button>
                 </div> -->
+                </div>
             </div>
-        </div>
-        <!-- <div class="col col-sm-6">
+            <!-- <div class="col col-sm-6">
             <div class="card mb-3">
                 <div class="card-header">
                     Doughnut Chart
@@ -49,8 +60,8 @@
                 </div>
             </div>
         </div> -->
-    </div>
-    <!-- <div class="row">
+        </div>
+        <!-- <div class="row">
         <div class="col col-sm-6">
             <div class="card mb-3">
                 <div class="card-header">
@@ -74,7 +85,7 @@
             </div>
         </div>
     </div> -->
-    <!-- <div class="row">
+        <!-- <div class="row">
         <div class="col col-sm-6">
             <div class="card mb-3">
                 <div class="card-header">
@@ -98,4 +109,314 @@
             </div>
         </div>
     </div> -->
+    </div>
+
+
+    <div>
+            <!-- <div class="row">
+            <div class="col col-sm-6"> -->
+            <div class="overlay" [hidden]="!visiblePopup">
+                <div class="overlay-body">
+                    <i class="material-icons close" (click)="triggerPopup(false)">close</i>
+                    <h2 class="heading">Merchants</h2>
+                    
+                    <div class="flex-container">
+                        <div class="flex-box">
+                            <label>12312</label>
+                            <span>asdfhjkasfdh</span>
+                        </div>
+                        <div class="flex-box">
+                            <label>12312</label>
+                            <span>asdfhjkasfdh</span>
+                        </div>
+                        <div class="flex-box">
+                            <label>12312</label>
+                            <span>asdfhjkasfdh</span>
+                        </div>
+                        <div class="flex-box">
+                            <label>12312</label>
+                            <span>asdfhjkasfdh</span>
+                        </div>
+                        <div class="flex-box">
+                            <label>12312</label>
+                            <span>asdfhjkasfdh</span>
+                        </div>
+                        <div class="flex-box">
+                            <label>12312</label>
+                            <span>asdfhjkasfdh</span>
+                        </div>
+                        <div class="flex-box">
+                                <label>12312</label>
+                                <span>asdfhjkasfdh</span>
+                            </div>
+                            <div class="flex-box">
+                                <label>12312</label>
+                                <span>asdfhjkasfdh</span>
+                            </div>
+                            <div class="flex-box">
+                                <label>12312</label>
+                                <span>asdfhjkasfdh</span>
+                            </div>
+                            <div class="flex-box">
+                                <label>12312</label>
+                                <span>asdfhjkasfdh</span>
+                            </div>
+                            <div class="flex-box">
+                                    <label>12312</label>
+                                    <span>asdfhjkasfdh</span>
+                                </div>
+                                <div class="flex-box">
+                                    <label>12312</label>
+                                    <span>asdfhjkasfdh</span>
+                                </div>
+                                <div class="flex-box">
+                                    <label>12312</label>
+                                    <span>asdfhjkasfdh</span>
+                                </div>
+                                <div class="flex-box">
+                                        <label>12312</label>
+                                        <span>asdfhjkasfdh</span>
+                                    </div>
+                                    <div class="flex-box">
+                                        <label>12312</label>
+                                        <span>asdfhjkasfdh</span>
+                                    </div>
+                                    <div class="flex-box">
+                                        <label>12312</label>
+                                        <span>asdfhjkasfdh</span>
+                                    </div>
+                                    <div class="flex-box">
+                                        <label>12312</label>
+                                        <span>asdfhjkasfdh</span>
+                                    </div>
+                                    <div class="flex-box">
+                                            <label>12312</label>
+                                            <span>asdfhjkasfdh</span>
+                                        </div>
+                                        <div class="flex-box">
+                                            <label>12312</label>
+                                            <span>asdfhjkasfdh</span>
+                                        </div>
+                                        <div class="flex-box">
+                                            <label>12312</label>
+                                            <span>asdfhjkasfdh</span>
+                                        </div>
+                                        <div class="flex-box">
+                                                <label>12312</label>
+                                                <span>asdfhjkasfdh</span>
+                                            </div>
+                                            <div class="flex-box">
+                                                <label>12312</label>
+                                                <span>asdfhjkasfdh</span>
+                                            </div>
+                                            <div class="flex-box">
+                                                <label>12312</label>
+                                                <span>asdfhjkasfdh</span>
+                                            </div>
+                                            <div class="flex-box">
+                                                <label>12312</label>
+                                                <span>asdfhjkasfdh</span>
+                                            </div>
+                                            <div class="flex-box">
+                                                    <label>12312</label>
+                                                    <span>asdfhjkasfdh</span>
+                                                </div>
+                                                <div class="flex-box">
+                                                    <label>12312</label>
+                                                    <span>asdfhjkasfdh</span>
+                                                </div>
+                                                <div class="flex-box">
+                                                    <label>12312</label>
+                                                    <span>asdfhjkasfdh</span>
+                                                </div>
+                                                <div class="flex-box">
+                                                        <label>12312</label>
+                                                        <span>asdfhjkasfdh</span>
+                                                    </div>
+                                                    <div class="flex-box">
+                                                        <label>12312</label>
+                                                        <span>asdfhjjkjhk kjhkh khkhk h kjhjkh jkhhkkasfdh</span>
+                                                    </div>
+                                                    <div class="flex-box">
+                                                        <label>12312</label>
+                                                        <span>asdfhjkasfdh</span>
+                                                    </div>
+                                                    <div class="flex-box">
+                                                        <label>12312</label>
+                                                        <span>asdfhjkasfdh</span>
+                                                    </div>
+                                                    <div class="flex-box">
+                                                            <label>12312</label>
+                                                            <span>asdfhjkasfdh</span>
+                                                        </div>
+                                                        <div class="flex-box">
+                                                            <label>12312</label>
+                                                            <span>asdfhjkasfdh</span>
+                                                        </div>
+                                                        <div class="flex-box">
+                                                            <label>12312</label>
+                                                            <span>asdfhjkasfdh</span>
+                                                        </div>
+                                                        <div class="flex-box">
+                                                                <label>12312</label>
+                                                                <span>asdfhjkasfdh</span>
+                                                            </div>
+                                                            <div class="flex-box">
+                                                                <label>12312</label>
+                                                                <span>asdfhjkasfdh</span>
+                                                            </div>
+                                                            <div class="flex-box">
+                                                                <label>12312</label>
+                                                                <span>asdfhjkasfdh</span>
+                                                            </div>
+                                                            <div class="flex-box">
+                                                                <label>12312</label>
+                                                                <span>asdfhjkasfdh</span>
+                                                            </div>
+                                                            <div class="flex-box">
+                                                                    <label>12312</label>
+                                                                    <span>asdfhjkasfdh</span>
+                                                                </div>
+                                                                <div class="flex-box">
+                                                                    <label>12312</label>
+                                                                    <span>asdfhjkasfdh</span>
+                                                                </div>
+                                                                <div class="flex-box">
+                                                                    <label>12312</label>
+                                                                    <span>asdfhjkasfdh</span>
+                                                                </div>
+                                                                <div class="flex-box">
+                                                                        <label>12312</label>
+                                                                        <span>asdfhjkasfdh</span>
+                                                                    </div>
+                                                                    <div class="flex-box">
+                                                                        <label>12312</label>
+                                                                        <span>asdfhjkasfdh</span>
+                                                                    </div>
+                                                                    <div class="flex-box">
+                                                                        <label>12312</label>
+                                                                        <span>asdfhjkasfdh</span>
+                                                                    </div>
+                                                                    <div class="flex-box">
+                                                                        <label>12312</label>
+                                                                        <span>asdfhjkasfdh</span>
+                                                                    </div>
+                                                                    <div class="flex-box">
+                                                                            <label>12312</label>
+                                                                            <span>asdfhjkasfdh</span>
+                                                                        </div>
+                                                                        <div class="flex-box">
+                                                                            <label>12312</label>
+                                                                            <span>asdfhjkasfdh</span>
+                                                                        </div>
+                                                                        <div class="flex-box">
+                                                                            <label>12312</label>
+                                                                            <span>asdfhjkasfdh</span>
+                                                                        </div>
+                                                                        <div class="flex-box">
+                                                                                <label>12312</label>
+                                                                                <span>asdfhjkasfdh</span>
+                                                                            </div>
+                                                                            <div class="flex-box">
+                                                                                <label>12312</label>
+                                                                                <span>asdfhjjkjhk kjhkh khkhk h kjhjkh jkhhkkasfdh</span>
+                                                                            </div>
+                                                                            <div class="flex-box">
+                                                                                <label>12312</label>
+                                                                                <span>asdfhjkasfdh</span>
+                                                                            </div>
+                                                                            <div class="flex-box">
+                                                                                <label>12312</label>
+                                                                                <span>asdfhjkasfdh</span>
+                                                                            </div>
+                                                                            <div class="flex-box">
+                                                                                    <label>12312</label>
+                                                                                    <span>asdfhjkasfdh</span>
+                                                                                </div>
+                                                                                <div class="flex-box">
+                                                                                    <label>12312</label>
+                                                                                    <span>asdfhjkasfdh</span>
+                                                                                </div>
+                                                                                <div class="flex-box">
+                                                                                    <label>12312</label>
+                                                                                    <span>asdfhjkasfdh</span>
+                                                                                </div>
+                                                                                <div class="flex-box">
+                                                                                        <label>12312</label>
+                                                                                        <span>asdfhjkasfdh</span>
+                                                                                    </div>
+                                                                                    <div class="flex-box">
+                                                                                        <label>12312</label>
+                                                                                        <span>asdfhjkasfdh</span>
+                                                                                    </div>
+                                                                                    <div class="flex-box">
+                                                                                        <label>12312</label>
+                                                                                        <span>asdfhjkasfdh</span>
+                                                                                    </div>
+                                                                                    <div class="flex-box">
+                                                                                        <label>12312</label>
+                                                                                        <span>asdfhjkasfdh</span>
+                                                                                    </div>
+                                                                                    <div class="flex-box">
+                                                                                            <label>12312</label>
+                                                                                            <span>asdfhjkasfdh</span>
+                                                                                        </div>
+                                                                                        <div class="flex-box">
+                                                                                            <label>12312</label>
+                                                                                            <span>asdfhjkasfdh</span>
+                                                                                        </div>
+                                                                                        <div class="flex-box">
+                                                                                            <label>12312</label>
+                                                                                            <span>asdfhjkasfdh</span>
+                                                                                        </div>
+                                                                                        <div class="flex-box">
+                                                                                                <label>12312</label>
+                                                                                                <span>asdfhjkasfdh</span>
+                                                                                            </div>
+                                                                                            <div class="flex-box">
+                                                                                                <label>12312</label>
+                                                                                                <span>asdfhjkasfdh</span>
+                                                                                            </div>
+                                                                                            <div class="flex-box">
+                                                                                                <label>12312</label>
+                                                                                                <span>asdfhjkasfdh</span>
+                                                                                            </div>
+                                                                                            <div class="flex-box">
+                                                                                                <label>12312</label>
+                                                                                                <span>asdfhjkasfdh</span>
+                                                                                            </div>
+                                                                                            <div class="flex-box">
+                                                                                                    <label>12312</label>
+                                                                                                    <span>asdfhjkasfdh</span>
+                                                                                                </div>
+                                                                                                <div class="flex-box">
+                                                                                                    <label>12312</label>
+                                                                                                    <span>asdfhjkasfdh</span>
+                                                                                                </div>
+                                                                                                <div class="flex-box">
+                                                                                                    <label>12312</label>
+                                                                                                    <span>asdfhjkasfdh</span>
+                                                                                                </div>
+                                                                                                <div class="flex-box">
+                                                                                                        <label>12312</label>
+                                                                                                        <span>asdfhjkasfdh</span>
+                                                                                                    </div>
+                                                                                                    <div class="flex-box">
+                                                                                                        <label>12312</label>
+                                                                                                        <span>asdfhjjkjhk kjhkh khkhk h kjhjkh jkhhkkasfdh</span>
+                                                                                                    </div>
+                                                                                                    <div class="flex-box">
+                                                                                                        <label>12312</label>
+                                                                                                        <span>asdfhjkasfdh</span>
+                                                                                                    </div>
+                                                                                                    <div class="flex-box">
+                                                                                                        <label>12312</label>
+                                                                                                        <span>asdfhjkasfdh</span>
+                                                                                                    </div>
+                    </div>
+                </div>
+    
+                <div class='shim'></div>
+            </div>
+
 </div>
