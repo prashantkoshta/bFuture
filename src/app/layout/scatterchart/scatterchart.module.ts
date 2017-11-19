@@ -6,6 +6,7 @@ import { ChartsRoutingModule } from './scatterchart-routing.module';
 import { ScatterChartComponent } from './scatterchart.component';
 import { PageHeaderModule } from '../../shared';
 
+
 @NgModule({
     imports: [
         CommonModule,

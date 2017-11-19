@@ -8,7 +8,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class CommonService {
     // private urlEndPoint:string = "http://localhost:5000/api";
-    private urlEndPoint:string = "https://sparklersapi.herokuapp.com/api";
+    // private urlEndPoint:string = "https://sparklersapi.herokuapp.com/api";
+    private urlEndPoint:string = "http://ec2-13-126-33-137.ap-south-1.compute.amazonaws.com:2323"
 
     constructor(private http: Http) { }
 
@@ -42,11 +43,24 @@ export class CommonService {
         if(mapperid){
             if(mapperid == 'GROUPS'){
                 return this.appendSelectOption(data);
+            }else if(mapperid == "CONVERINTO_NUMBER"){
+                return this.convertIntoNumber(data);
             }
             
         }else{
             return data;
         }
+    }
+
+    private convertIntoNumber(data:any){
+        for(let i=0;i<data.length;i++){
+            data[i].Age = parseInt(data[i].Age);
+            data[i].Entertainment = parseInt(data[i].Entertainment);
+            // data[i].Cluster = parseInt(data[i].Cluster);
+            data[i].Cluster = data[i].Cluster +"_I";
+            
+        }
+        return data;
     }
 
     private appendSelectOption(data:any){
