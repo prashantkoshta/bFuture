@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class CommonService {
@@ -45,13 +46,37 @@ export class CommonService {
                 return this.appendSelectOption(data);
             }else if(mapperid == "CONVERINTO_NUMBER"){
                 return this.convertIntoNumber(data);
+            }else if( mapperid == 'CONVERT_INTO_BARCHART_DATA'){
+                return this.convertIntoChart(data);
+            }else if(mapperid == 'SCATTER_CHART_DATA'){
+                return this.dataForCustomerGroup(data);
             }
             
         }else{
             return data;
         }
     }
-
+    private dataForCustomerGroup(data:any){
+        let excludedItem = ["Cluster","id","Name","Age","Score","Status","Sex"];
+        let yAxisExclusion =  ["Cluster","id","Name","Age","Score","Status","Sex"];
+        let yAxisGroups = [];
+        for(let i=0;i<data.length;i++){
+            let item:any = data[i];
+            for(let key in item){
+                if(excludedItem.indexOf(key)<0){
+                    item[key] = this.getNumber(item[key]);
+                }
+                if(yAxisExclusion.indexOf(key)<0 && (i ==0) ){
+                    yAxisGroups.push(key);
+                }
+            }
+        }
+        let obj = {
+            data:data,
+            yaxisgroup:yAxisGroups
+        }
+        return obj;
+    }
     private convertIntoNumber(data:any){
         for(let i=0;i<data.length;i++){
             data[i].Age = parseInt(data[i].Age);
@@ -69,6 +94,25 @@ export class CommonService {
             obj.push({"name":data[i],"value":data[i]});
         }
         return obj;
+    }
+
+    private convertIntoChart(data:any){
+        let obj = {
+            "xLabels": data["XAxis"],
+            "data": [{
+                "data": Array.from(data['Data'][0].Values).map(val => this.getNumber(val)),
+                "label": data['Data'][0].Label
+            }, {
+                "data": Array.from(data['Data'][1].Values).map(val => this.getNumber(val)),
+                "label": data['Data'][1].Label
+            }]
+        };
+        let value = obj;
+        return obj
+    }
+
+    private getNumber(val){
+        return parseFloat(val);
     }
     
 }

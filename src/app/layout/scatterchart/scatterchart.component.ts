@@ -20,6 +20,7 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
     private xvalue=  "Age";
     private yvalue= "Entertainment";
     private groupby = "Cluster"
+    public listProduct;
     
     constructor(private route:ActivatedRoute,private router:Router,private _commonService:CommonService) {
     }
@@ -46,13 +47,11 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
                 // ref.getCustomerData(ref.inVal);
             }
         });
+    }
 
-
-        
-        
-
-           
-        
+    public onGroupSelect(grpName:string):void{
+        this.yvalue = grpName;
+        this.drawChart(this.chartData);
     }
 
     public getChartData():void{
@@ -61,10 +60,15 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
         //    let value = data;
         //    ref.drawChartOld(value);
         // });
+        this._commonService.fetchData("/Customer",{},"get","SCATTER_CHART_DATA").subscribe(data => {
+            ref.listProduct = data['yaxisgroup'];
+            ref.yvalue = ref.listProduct[0];
+            ref.drawChart(data['data']);
+        });
 
-        this._commonService.fetchData("/Customer",{},"get","CONVERINTO_NUMBER").subscribe(data => {
-            ref.drawChart(data);
-         });
+        // this._commonService.fetchData("/Customer",{},"get","CONVERINTO_NUMBER").subscribe(data => {
+        //     ref.drawChart(data);
+        // });
     }
 
     private drawChart(data:any):void{
@@ -159,7 +163,7 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
                 .style('border', "1px solid #b2b2b2")
                 .style('border-radius', "5px")
                 .style('padding', "5px")
-                tooltip.text(`${ref.xvalue}:${d[ref.xvalue]},${ref.yvalue}:${d[ref.yvalue]},Group:${ref.groupby}`)
+                tooltip.text(`${ref.xvalue}:${d[ref.xvalue]},${ref.yvalue}:${d[ref.yvalue]},Group:${d[ref.groupby]}`)
                 .style('left', `${d3.event.pageX + 15}px`)	
                 .style('top', `${d3.event.pageY - 18}px`);
             })

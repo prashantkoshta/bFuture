@@ -1,6 +1,25 @@
 <div [@routerTransition]>
     <!-- <app-page-header [heading]="'Charts'" [icon]="'fa-bar-chart-o'"></app-page-header> -->
     <div class="row">
+        <div class="col-lg-2 col-md-4 col-xs-12">
+            <form role="form">
+                <fieldset class="form-group">
+                    <label>Analysis Based on Product :</label>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-lg-4 col-md-4 col-xs-12">
+            <form role="form">
+                <fieldset class="form-group">
+                    <select #selGroup (change)="onGroupSelect(selGroup.value)" class="selectbox form-control">
+                        <option *ngFor="let item of listProduct" [value]="item">{{item}}</option>
+                    </select>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-lg-6 col-md-4 col-xs-12"></div>
+    </div>
+    <div class="row">
         <div class="col col-sm-12">
             <div class="card mb-12">
                 <div class="card-header">
