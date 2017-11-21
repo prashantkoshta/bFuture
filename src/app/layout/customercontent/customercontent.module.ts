@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule,Routes } from '@angular/router';
 import { ChartsModule as Ng2Charts } from 'ng2-charts';
 
-import { CustomerPreferenceRoutingModule } from './customerpreference-routing.module';
-import { CustomerPreferenceComponent } from './customerpreference.component';
+import { CustomerContentRoutingModule } from './customercontent-routing.module';
+import { CustomerContentComponent } from './customercontent.component';
 import { PageHeaderModule } from '../../shared';
 
 
@@ -12,9 +12,9 @@ import { PageHeaderModule } from '../../shared';
     imports: [
         CommonModule,
         Ng2Charts,
-        CustomerPreferenceRoutingModule,
+        CustomerContentRoutingModule,
         PageHeaderModule
     ],
-    declarations: [CustomerPreferenceComponent]
+    declarations: [CustomerContentComponent]
 })
-export class CustomerPreferenceModule { }
+export class CustomerContentModule { }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CustomerPreferenceComponent } from './customerpreference.component';
+import { CustomerContentComponent } from './customercontent.component';
 
 // const routes: Routes = [
 //     { path: '', component: ChartsComponent }
@@ -10,11 +10,11 @@ const routes:Routes = [
     
     { 
         path: ':id',
-        component :CustomerPreferenceComponent
+        component :CustomerContentComponent
     },
     { 
         path: '**',
-        component :CustomerPreferenceComponent
+        component :CustomerContentComponent
     }
 ]
 
@@ -22,4 +22,4 @@ const routes:Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class CustomerPreferenceRoutingModule { }
+export class CustomerContentRoutingModule { }

@@ -35,7 +35,7 @@ $cols-index: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18;
 
 
 .mat-table {
-    overflow: scroll;
+    // overflow: scroll;
     max-height: 500px;
     $table_width:0px;
     @for $i from 1 through length($cols-index){
@@ -44,7 +44,7 @@ $cols-index: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18;
         $cellid: nth($colslist, $i);
         $table_width:$table_width+$cw;
         .mat-header-row{
-            border-color:rgba(0, 0, 0, 0.125);
+            border-color:rgba(0, 0, 0, 0.473);
             // @debug #{$cellid};
             .cdk-column-#{$cellid}{
                 min-width: $cw;
@@ -67,6 +67,9 @@ $cols-index: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18;
     width:$table_width+100px;
     .mat-row{
         .mat-cell{
+            
+        }
+        .mat-column-Name{
             word-break:break-all;
             word-wrap: normal;
         }

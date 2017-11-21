@@ -21,7 +21,7 @@ $topnav-background-color: #00395D;
             transition: all 0.2s ease-in-out;
     // border-top: 1px solid rgba(255,255,255,0.3);
     .list-group{
-        a.list-group-item {
+        a.list-group-item, a.list-group-item-sub  {
             background: $topnav-background-color;
             border: 0;
             border-radius: 0;
@@ -38,6 +38,10 @@ $topnav-background-color: #00395D;
         a.router-link-active {
             background: darken($topnav-background-color, 5%);
             color: #fff;
+        }
+
+        .list-group-item-sub{
+            margin-left: 20px;
         }
     }
     .sidebar-dropdown {
@@ -96,6 +100,18 @@ $topnav-background-color: #00395D;
         display: inline-block;
         margin-bottom: .5rem;
         border-bottom: white 1px solid;
+        color: white;
+        padding-left: 20px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        &.first{
+            padding-top: 0;
+        }
+    }
+    .lab-heading-lab{
+        display: inline-block;
+        margin-bottom: .5rem;
+        // border-bottom: white 1px solid;
         color: white;
         padding-left: 20px;
         padding-bottom: 10px;

@@ -4,12 +4,12 @@ import { routerTransition } from '../../router.animations';
 import { CommonService } from "../../shared/services/common.service";
 
 @Component({
-    selector: 'app-customerpreference',
-    templateUrl: './customerpreference.component.html',
-    styleUrls: ['./customerpreference.component.scss'],
+    selector: 'app-customercontent',
+    templateUrl: './customercontent.component.html',
+    styleUrls: ['./customercontent.component.scss'],
     animations: [routerTransition()]
 })
-export class CustomerPreferenceComponent implements OnInit {
+export class CustomerContentComponent implements OnInit {
     public boolShow:boolean = false;
     public visiblePopup:boolean = false;
     // bar chart
@@ -21,7 +21,7 @@ export class CustomerPreferenceComponent implements OnInit {
     public barChartType: string = 'bar';
     public barChartLegend: boolean = true;
     public barChartData: any[];
-    public titleName:string = "Collaboration";
+    public titleName:string = "Content";
     constructor(private route:ActivatedRoute,private router:Router,private _commonService:CommonService) {
     }
 
@@ -39,7 +39,6 @@ export class CustomerPreferenceComponent implements OnInit {
         console.log(e);
     }
 
-   
     public inVal:string = "";
 
    
@@ -55,7 +54,7 @@ export class CustomerPreferenceComponent implements OnInit {
     }
 
     public onSubmitCustomerId(custtomerId:string):void{
-        this.router.navigate(["/customer-collaboration",custtomerId]);
+        this.router.navigate(["/customer-content",custtomerId]);
         // this.getCustomerData(custtomerId);
     }
 
@@ -72,7 +71,7 @@ export class CustomerPreferenceComponent implements OnInit {
     //        ref.boolShow = true;
     //     });
 
-        this._commonService.fetchData("/ChartData/"+custtomerId,{},"get",'CONVERT_INTO_BARCHART_CONTENT_DATA').subscribe(data => {
+        this._commonService.fetchData("/ChartData/"+custtomerId,{},"get",'CONVERT_INTO_BARCHART_DATA').subscribe(data => {
             let value = data;
             ref.barChartLabels = value["xLabels"];
             ref.barChartType = 'bar';

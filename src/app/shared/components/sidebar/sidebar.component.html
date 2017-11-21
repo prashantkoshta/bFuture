@@ -14,8 +14,12 @@
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Card Offers' | translate }}
         </a> -->
         <label class="lab-heading">Analysis</label>
-        <a [routerLink]="['/customerpreference']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;{{ 'Customer Preference' | translate }}
+        <label class="lab-heading-lab">Customer</label>
+        <a [routerLink]="['/customer-collaboration','']" [routerLinkActive]="['router-link-active']" class="list-group-item list-group-item-sub">
+            <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;{{ 'Collaboration' | translate }}
+        </a>
+        <a [routerLink]="['/customer-content','']" [routerLinkActive]="['router-link-active']" class="list-group-item list-group-item-sub">
+            <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;{{ 'Content' | translate }}
         </a>
         <a [routerLink]="['/customergroup']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Customer Groups' | translate }}

@@ -47,9 +47,11 @@ export class CommonService {
             }else if(mapperid == "CONVERINTO_NUMBER"){
                 return this.convertIntoNumber(data);
             }else if( mapperid == 'CONVERT_INTO_BARCHART_DATA'){
-                return this.convertIntoChart(data);
+                return this.convertIntoChart(data,"FOR_COLLABORATION");
             }else if(mapperid == 'SCATTER_CHART_DATA'){
                 return this.dataForCustomerGroup(data);
+            }else if(mapperid == "CONVERT_INTO_BARCHART_CONTENT_DATA"){
+                return this.convertIntoChart(data,'FOR_CONTENT');
             }
             
         }else{
@@ -96,15 +98,24 @@ export class CommonService {
         return obj;
     }
 
-    private convertIntoChart(data:any){
+    private convertIntoChart(data:any,forScreen:string){
+         let bar1DataIndex:number = 0;
+        let bar2DataIndex:number = 1;
+        if(data['Data'].length>2){
+            bar1DataIndex = (forScreen == 'FOR_CONTENT')?0:2;
+            bar2DataIndex = (forScreen == 'FOR_CONTENT')?1:3;
+        }else{
+            bar1DataIndex = (forScreen == 'FOR_CONTENT')?0:0;
+            bar2DataIndex = (forScreen == 'FOR_CONTENT')?1:1;
+        }
         let obj = {
             "xLabels": data["XAxis"],
             "data": [{
-                "data": Array.from(data['Data'][0].Values).map(val => this.getNumber(val)),
-                "label": data['Data'][0].Label
+                "data": Array.from(data['Data'][bar1DataIndex].Values).map(val => this.getNumber(val)),
+                "label": data['Data'][bar1DataIndex].Label
             }, {
-                "data": Array.from(data['Data'][1].Values).map(val => this.getNumber(val)),
-                "label": data['Data'][1].Label
+                "data": Array.from(data['Data'][bar2DataIndex].Values).map(val => this.getNumber(val)),
+                "label": data['Data'][bar2DataIndex].Label
             }]
         };
         let value = obj;

@@ -8,7 +8,8 @@ const routes: Routes = [
         children: [
             { path: 'merchant', loadChildren: './merchant/merchant.module#MerchantModule' },
             { path: 'customer', loadChildren: './customer/customer.module#CustomerModule' },
-            { path: 'customerpreference', loadChildren: './customerpreference/customerpreference.module#CustomerPreferenceModule' },
+            { path: 'customer-collaboration', loadChildren: './customerpreference/customerpreference.module#CustomerPreferenceModule' },
+            { path: 'customer-content', loadChildren: './customercontent/customercontent.module#CustomerContentModule' },
             { path: 'customergroup', loadChildren: './scatterchart/scatterchart.module#ScatterChartModule' },
             { path: 'offers', loadChildren: './offers/offers.module#OffersModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },

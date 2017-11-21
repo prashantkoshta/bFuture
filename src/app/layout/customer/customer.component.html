@@ -36,7 +36,7 @@
                         <ng-container matColumnDef="id">
                             <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
                             <mat-cell *matCellDef="let element">
-                                <a [routerLink]="['/customerpreference',element.id]">{{element.id}}</a>
+                                <a [routerLink]="['/customer-collaboration',element.id]">{{element.id}}</a>
                             </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Name">
@@ -74,43 +74,43 @@
                         </ng-container>
                         <ng-container matColumnDef="AvgPayin">
                             <mat-header-cell *matHeaderCellDef> AvgPayin </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.AvgPayin}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{element.AvgPayin | number :'.0-2'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="AvgExp">
                             <mat-header-cell *matHeaderCellDef> AvgExp </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.AvgExp}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{element.AvgExp | number :'.0-2'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Fashion">
                             <mat-header-cell *matHeaderCellDef> Fashion </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Fashion}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Fashion | number :'.0-2'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Travel">
                             <mat-header-cell *matHeaderCellDef> Travel </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Travel}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Travel | number :'.0-2'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Health">
                             <mat-header-cell *matHeaderCellDef> Health </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Health}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Health | number :'.0-2'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Entertainment">
                             <mat-header-cell *matHeaderCellDef> Entertainment </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Entertainment}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Entertainment | number :'.0-2'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Food">
                             <mat-header-cell *matHeaderCellDef> Food </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Food}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Food | number :'.0-2'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Electronic">
                             <mat-header-cell *matHeaderCellDef> Electronic </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Electronic}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Electronic | number :'.0-2'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Sports">
                             <mat-header-cell *matHeaderCellDef> Sports </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Sports}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Sports | number :'.0-2'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Grossary">
-                            <mat-header-cell *matHeaderCellDef> Grossary </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Grossary}} </mat-cell>
+                            <mat-header-cell *matHeaderCellDef> Grocery </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Grossary | number :'.0-2'}} </mat-cell>
                         </ng-container>
 
                         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
