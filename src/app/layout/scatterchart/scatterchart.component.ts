@@ -83,7 +83,7 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
             top:30,
             right:30,
             bottom:50,
-            left:100
+            left:60
         };
         var width = this.chartAreaWidth -margin.left-margin.right;
         var height = 700 -margin.top - margin.bottom;

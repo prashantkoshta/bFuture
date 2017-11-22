@@ -83,6 +83,10 @@ export class CustomerComponent implements OnInit {
     public onGroupSelect(item:any){
         this.getCutomers((item == -1)?null:item);
     }
+
+    public exportFile():void{
+        this._commonService.exportAsExcelFile(this.listCustomer,"Customer_");
+    }
 }
 
 

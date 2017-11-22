@@ -6,107 +6,112 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import { forEach } from '@angular/router/src/utils/collection';
 
+import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx';
+
+const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+const EXCEL_EXTENSION = '.xlsx';
+
 @Injectable()
 export class CommonService {
     // private urlEndPoint:string = "http://localhost:5000/api";
     // private urlEndPoint:string = "https://sparklersapi.herokuapp.com/api";
-    private urlEndPoint:string = "http://ec2-13-126-33-137.ap-south-1.compute.amazonaws.com:2323"
+    private urlEndPoint: string = "http://ec2-13-126-33-137.ap-south-1.compute.amazonaws.com:2323"
 
     constructor(private http: Http) { }
 
 
-    private parseResponse(res:Response){
+    private parseResponse(res: Response) {
         let _json = res.json();
         return _json;
     }
 
-    public fetchData(apiName:string,param:object,methodType:string,mapperid:string=null) :Observable<object>{
+    public fetchData(apiName: string, param: object, methodType: string, mapperid: string = null): Observable<object> {
         // let url:string="http://ec2-13-126-33-137.ap-south-1.compute.amazonaws.com:2323/Customer";
         let service = this.http
-                .get(this.urlEndPoint+apiName)
-                // .get(url)
-                .map(data => this.doMapperAction(data,mapperid))
-                .do((res) => {
-                    // console.log(">>>>>>>");
-                    // debugger;
+            .get(this.urlEndPoint + apiName)
+            // .get(url)
+            .map(data => this.doMapperAction(data, mapperid))
+            .do((res) => {
+                // console.log(">>>>>>>");
+                // debugger;
 
-                })
-                .catch((error:any) =>
-                {
-                    // debugger;
-                    return Observable.throw(error);
-                });
-        return service;        
+            })
+            .catch((error: any) => {
+                // debugger;
+                return Observable.throw(error);
+            });
+        return service;
     }
 
-    private doMapperAction(res:Response,mapperid:string):any{
+    private doMapperAction(res: Response, mapperid: string): any {
         let data = this.parseResponse(res);
-        if(mapperid){
-            if(mapperid == 'GROUPS'){
+        if (mapperid) {
+            if (mapperid == 'GROUPS') {
                 return this.appendSelectOption(data);
-            }else if(mapperid == "CONVERINTO_NUMBER"){
+            } else if (mapperid == "CONVERINTO_NUMBER") {
                 return this.convertIntoNumber(data);
-            }else if( mapperid == 'CONVERT_INTO_BARCHART_DATA'){
-                return this.convertIntoChart(data,"FOR_COLLABORATION");
-            }else if(mapperid == 'SCATTER_CHART_DATA'){
+            } else if (mapperid == 'CONVERT_INTO_BARCHART_DATA') {
+                return this.convertIntoChart(data, "FOR_COLLABORATION");
+            } else if (mapperid == 'SCATTER_CHART_DATA') {
                 return this.dataForCustomerGroup(data);
-            }else if(mapperid == "CONVERT_INTO_BARCHART_CONTENT_DATA"){
-                return this.convertIntoChart(data,'FOR_CONTENT');
+            } else if (mapperid == "CONVERT_INTO_BARCHART_CONTENT_DATA") {
+                return this.convertIntoChart(data, 'FOR_CONTENT');
             }
-            
-        }else{
+
+        } else {
             return data;
         }
     }
-    private dataForCustomerGroup(data:any){
-        let excludedItem = ["Cluster","id","Name","Age","Score","Status","Sex"];
-        let yAxisExclusion =  ["Cluster","id","Name","Age","Score","Status","Sex"];
+    private dataForCustomerGroup(data: any) {
+        let excludedItem = ["Cluster", "id", "Name", "Age", "Score", "Status", "Sex"];
+        let yAxisExclusion = ["Cluster", "id", "Name", "Age", "Score", "Status", "Sex"];
         let yAxisGroups = [];
-        for(let i=0;i<data.length;i++){
-            let item:any = data[i];
-            for(let key in item){
-                if(excludedItem.indexOf(key)<0){
+        for (let i = 0; i < data.length; i++) {
+            let item: any = data[i];
+            for (let key in item) {
+                if (excludedItem.indexOf(key) < 0) {
                     item[key] = this.getNumber(item[key]);
                 }
-                if(yAxisExclusion.indexOf(key)<0 && (i ==0) ){
+                if (yAxisExclusion.indexOf(key) < 0 && (i == 0)) {
                     yAxisGroups.push(key);
                 }
             }
         }
         let obj = {
-            data:data,
-            yaxisgroup:yAxisGroups
+            data: data,
+            yaxisgroup: yAxisGroups
         }
         return obj;
     }
-    private convertIntoNumber(data:any){
-        for(let i=0;i<data.length;i++){
+    private convertIntoNumber(data: any) {
+        for (let i = 0; i < data.length; i++) {
             data[i].Age = parseInt(data[i].Age);
             data[i].Entertainment = parseInt(data[i].Entertainment);
             // data[i].Cluster = parseInt(data[i].Cluster);
-            data[i].Cluster = data[i].Cluster +"_I";
-            
+            data[i].Cluster = data[i].Cluster + "_I";
+
         }
         return data;
     }
 
-    private appendSelectOption(data:any){
-        var obj = [{"name":"All Groups","value":-1}]
-        for(let i=0;i<data.length;i++){
-            obj.push({"name":data[i],"value":data[i]});
+    private appendSelectOption(data: any) {
+        var obj = [{ "name": "All Groups", "value": -1 }]
+        for (let i = 0; i < data.length; i++) {
+            obj.push({ "name": data[i], "value": data[i] });
         }
         return obj;
     }
 
-    private convertIntoChart(data:any,forScreen:string){
-         let bar1DataIndex:number = 0;
-        let bar2DataIndex:number = 1;
-        if(data['Data'].length>2){
-            bar1DataIndex = (forScreen == 'FOR_COLLABORATION')?0:2;
-            bar2DataIndex = (forScreen == 'FOR_COLLABORATION')?1:3;
-        }else{
-            bar1DataIndex = (forScreen == 'FOR_COLLABORATION')?0:0;
-            bar2DataIndex = (forScreen == 'FOR_COLLABORATION')?1:1;
+    private convertIntoChart(data: any, forScreen: string) {
+        let bar1DataIndex: number = 0;
+        let bar2DataIndex: number = 1;
+        if (data['Data'].length > 2) {
+            bar1DataIndex = (forScreen == 'FOR_COLLABORATION') ? 0 : 2;
+            bar2DataIndex = (forScreen == 'FOR_COLLABORATION') ? 1 : 3;
+        } else {
+            bar1DataIndex = (forScreen == 'FOR_COLLABORATION') ? 0 : 0;
+            bar2DataIndex = (forScreen == 'FOR_COLLABORATION') ? 1 : 1;
         }
         let obj = {
             "xLabels": data["XAxis"],
@@ -122,8 +127,22 @@ export class CommonService {
         return obj
     }
 
-    private getNumber(val){
+    private getNumber(val) {
         return parseFloat(val);
     }
-    
+
+    public exportAsExcelFile(json: any[], excelFileName: string): void {
+        const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
+        const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+        const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
+        this.saveAsExcelFile(excelBuffer, excelFileName);
+    }
+
+    private saveAsExcelFile(buffer: any, fileName: string): void {
+        const data: Blob = new Blob([buffer], {
+            type: EXCEL_TYPE
+        });
+        FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+    }
+
 }

@@ -7,6 +7,9 @@
         <a routerLink="/customer" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{ 'Customer' | translate }}
         </a>
+        <a [routerLink]="['/offers']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;{{ 'Offers' | translate }}
+        </a>
         <!-- <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Charts' | translate }}
         </a>
@@ -15,19 +18,19 @@
         </a> -->
         <label class="lab-heading">Analysis</label>
         <label class="lab-heading-lab">Customer</label>
-        <a [routerLink]="['/customer-collaboration','']" [routerLinkActive]="['router-link-active']" class="list-group-item list-group-item-sub">
+        <a [routerLink]="['/customer-collaboration']" [routerLinkActive]="['router-link-active']" class="list-group-item list-group-item-sub">
             <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;{{ 'Collaboration' | translate }}
         </a>
-        <a [routerLink]="['/customer-content','']" [routerLinkActive]="['router-link-active']" class="list-group-item list-group-item-sub">
+        <a [routerLink]="['/customer-content']" [routerLinkActive]="['router-link-active']" class="list-group-item list-group-item-sub">
             <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;{{ 'Content' | translate }}
         </a>
         <a [routerLink]="['/customergroup']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Customer Groups' | translate }}
         </a>
-        <label class="lab-heading">Dashboard</label>
+        <!-- <label class="lab-heading">Dashboard</label>
         <a [routerLink]="['/offers']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;{{ 'Dashboard' | translate }}
-        </a>
+            <i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;{{ 'Offers' | translate }}
+        </a> -->
         <!-- <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'Tables' | translate }}
         </a>

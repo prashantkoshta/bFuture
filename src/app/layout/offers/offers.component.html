@@ -1,60 +1,71 @@
 <div [@routerTransition]>
     <!-- <h2 class="text-muted">Dashboard <small>Statistics Overview</small></h2> -->
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-lg-2 col-md-4 col-xs-12">
             <form role="form" onsubmit="return false">
                 <fieldset class="form-group">
-                    <label>Merchant Name </label>
+                    <label>Customer Id:</label>
                 </fieldset>
             </form>
         </div>
-        <div class="col-md-2">
-            <form role="form">
-                    <fieldset class="form-group">
-                        <select #selGroup (change)="onGroupSelect(selGroup.id)" class="selectbox form-control">
-                            <option *ngFor="let item of listOfMerchant" [value]="item.id">{{item.id}}-{{item.Name}}</option>
-                        </select>
-                    </fieldset>
-                </form>
+        <div class="col-lg-4 col-md-6 col-xs-12">
+            <form role="form" onsubmit="return false">
+                <div class="form-group input-group">
+                    <input #inputCustomer type="text" class="form-control" (keyup.enter)="onSubmitCustomerId(inputCustomer.value)" 
+                    [value]="inVal" placeholder="Enter Customer ID">
+                    <span class="input-group-btn">
+                        <button (click)="onSubmitCustomerId(inputCustomer.value)" class="btn btn-secondary" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
         </div>
-        <div class="col-md-8"></div>
+        <div class="col-lg-6 col-md-2 col-xs-12"></div>
     </div>
+    <ng-template [ngIf]="boolShow">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card mb-4">
+        <div class="col-md-12">
+            <div class="card mb-3">
                 <div class="card-header">
-                    Pie Chart
+                    Offer Details
+                    <i class="material-icons export-ico" (click)="exportFile()">file_download</i>
                 </div>
-                <div class="card-body">
-                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card mb-4">
-                <div class="card-header">
-                    Pie Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card mb-4">
-                <div class="card-header">
-                    Pie Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)">
-                    </canvas>
+                <div class="card-block table-responsive">
+                    <mat-table #table [dataSource]="dataSource">
+                        <ng-container matColumnDef="Cluster">
+                            <mat-header-cell *matHeaderCellDef> Group </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Cluster}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="ContAvgPred">
+                            <mat-header-cell *matHeaderCellDef> ContAvgPred </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.ContAvgPred}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="ContPred">
+                            <mat-header-cell *matHeaderCellDef> ContPred </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.ContPred}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="CollabAvgPred">
+                            <mat-header-cell *matHeaderCellDef> CollabAvgPred </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.CollabAvgPred}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="CollabPred">
+                            <mat-header-cell *matHeaderCellDef> CollabPred </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.CollabPred}} </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+
                 </div>
             </div>
         </div>
     </div>
+    </ng-template>
+
 </div>

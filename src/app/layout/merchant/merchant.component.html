@@ -5,6 +5,7 @@
             <div class="card mb-3">
                 <div class="card-header">
                     Merchant Details
+                    <i class="material-icons export-ico" (click)="exportFile()">file_download</i>
                 </div>
                 <div class="card-block table-responsive">
                     <mat-table #table [dataSource]="dataSource">

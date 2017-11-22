@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute,Router,NavigationEnd } from '@angular/router';
 import { routerTransition } from '../../router.animations';
 import { CommonService } from "../../shared/services/common.service";
 import {DataSource} from '@angular/cdk/collections';
@@ -12,50 +13,51 @@ import 'rxjs/add/observable/of';
     animations: [routerTransition()]
 })
 export class OffersComponent implements OnInit {
+    public boolShow:boolean = false;
     public dataSource;
-    public listOfMerchant;
+    public gridData:any;
+    public displayedColumns:any;
+    public inVal:string = "";
 
-    // Pie
-    public pieChartLabels: string[] = [
-        'Download Sales',
-        'In-Store Sales',
-        'Mail Sales'
-    ];
-    public pieChartData: number[] = [300, 500, 100];
-    public pieChartType: string = 'pie';
-
-
-    constructor(private _commonService:CommonService) {
-        
+    constructor(private route:ActivatedRoute,private router:Router,private _commonService:CommonService) {
+        this.gridData = [];
+        this.displayedColumns = [
+            "Cluster",
+            "name",
+            "ContAvgPred",
+            "ContPred",
+            "CollabAvgPred",
+            "CollabPred"
+            ];
     }
 
     ngOnInit() {
-        var ref= this;
-        this._commonService.fetchData("/Merchant",{},"get").subscribe(data => {
-            ref.listOfMerchant = data;
+        var ref = this;
+        this.route.params.subscribe(params =>{
+            if(params.hasOwnProperty("id") && params.id != ""){
+                ref.inVal = params.id;
+                ref.getCustomerData(ref.inVal);
+            }
         });
     }
     
-    private getPieChartData(p_id:string):void{
+    public onSubmitCustomerId(custtomerId:string):void{
+        this.router.navigate(["/offers",custtomerId]);
+    }
+
+    private getCustomerData(custtomerId:string):void{
         var ref = this;
-        // this._commonService.fetchData("/getCustomers",{},"get").subscribe(data => {
-        //     this.listCustomer = data["data"];
-        //     ref.dataSource = new ExampleDataSource(this.listCustomer);
-        // });
+        this._commonService.fetchData("/Offers/"+custtomerId,{},"get",null).subscribe(data => {
+            ref.gridData = data;
+            ref.dataSource = new ExampleDataSource(ref.gridData);
+            ref.boolShow = true;
+         });
     }
 
-    public onGroupSelect(item:any){
-        this.getPieChartData((item == -1)?null:item);
+    public exportFile():void{
+        this._commonService.exportAsExcelFile(this.gridData,"Offersr_");
     }
-
-     // events
-     public chartClicked(e: any): void {
-        // console.log(e);
-    }
-
-    public chartHovered(e: any): void {
-        // console.log(e);
-    }
+  
 
 }
 

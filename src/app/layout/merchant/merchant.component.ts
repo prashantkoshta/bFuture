@@ -34,6 +34,9 @@ export class MerchantComponent implements OnInit {
         });
     }
     
+    public exportFile():void{
+        this._commonService.exportAsExcelFile(this.gridData,"Mercahnt_");
+    }
   
 }
 
