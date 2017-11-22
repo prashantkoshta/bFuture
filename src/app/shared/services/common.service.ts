@@ -102,11 +102,11 @@ export class CommonService {
          let bar1DataIndex:number = 0;
         let bar2DataIndex:number = 1;
         if(data['Data'].length>2){
-            bar1DataIndex = (forScreen == 'FOR_CONTENT')?0:2;
-            bar2DataIndex = (forScreen == 'FOR_CONTENT')?1:3;
+            bar1DataIndex = (forScreen == 'FOR_COLLABORATION')?0:2;
+            bar2DataIndex = (forScreen == 'FOR_COLLABORATION')?1:3;
         }else{
-            bar1DataIndex = (forScreen == 'FOR_CONTENT')?0:0;
-            bar2DataIndex = (forScreen == 'FOR_CONTENT')?1:1;
+            bar1DataIndex = (forScreen == 'FOR_COLLABORATION')?0:0;
+            bar2DataIndex = (forScreen == 'FOR_COLLABORATION')?1:1;
         }
         let obj = {
             "xLabels": data["XAxis"],

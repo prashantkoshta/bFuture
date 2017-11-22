@@ -1,3 +1,4 @@
+var path = require('path');
 var express = require('express');
 var app = express();
 var router = express.Router();
@@ -26,11 +27,15 @@ app.use(function (req, res, next) {
 
 // app.use("/api",require('./poc-api/poc-routes.js'));
 
-router.get('/', function(req, res) {
-    res.json({ message: 'Welcome Sparklers.' });   
-});
+// router.get('/', function(req, res) {
+//     res.json({ message: 'Welcome Sparklers.' });   
+// });
 // REGISTER OUR ROUTES -------------------------------
 
+
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, '/dist/index.html'));
+});
 
 // all of our routes will be prefixed with /api
 app.listen(app.get('port'), function() {
