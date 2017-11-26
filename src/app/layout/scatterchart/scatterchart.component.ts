@@ -163,7 +163,8 @@ export class ScatterChartComponent implements OnInit, AfterViewInit{
                 .style('border', "1px solid #b2b2b2")
                 .style('border-radius', "5px")
                 .style('padding', "5px")
-                tooltip.text(`${ref.xvalue}:${d[ref.xvalue]},${ref.yvalue}:${d[ref.yvalue]},Group:${d[ref.groupby]}`)
+                tooltip.html("<div class='stooltip'><p>"+`${ref.xvalue} : ${d[ref.xvalue]}`+"</p><p>"+`${ref.yvalue} : ${d[ref.yvalue]}`+"</p><p>Customer : "+`${d["id"]} - ${d["Name"]}`+"</p><p>Group : "+`${d[ref.groupby]}`+"</p></div>")
+                // tooltip.text(`${ref.xvalue} :${d[ref.xvalue]},${ref.yvalue} : ${d[ref.yvalue]},Group : ${d[ref.groupby]} - ${d["Name"]}`)
                 .style('left', `${d3.event.pageX + 15}px`)	
                 .style('top', `${d3.event.pageY - 18}px`);
             })

@@ -4,22 +4,28 @@
         <div class="col-lg-2 col-md-4 col-xs-12">
             <form role="form" onsubmit="return false">
                 <fieldset class="form-group">
-                    <label>Customer Id:</label>
+                    <label>Merchant :</label>
                 </fieldset>
             </form>
         </div>
         <div class="col-lg-4 col-md-6 col-xs-12">
-            <form role="form" onsubmit="return false">
-                <div class="form-group input-group">
-                    <input #inputCustomer type="text" class="form-control" (keyup.enter)="onSubmitCustomerId(inputCustomer.value)" 
+            
+                    <!-- <input #inputCustomer type="text" class="form-control" (keyup.enter)="onSubmitCustomerId(inputCustomer.value)" 
                     [value]="inVal" placeholder="Enter Customer ID">
                     <span class="input-group-btn">
                         <button (click)="onSubmitCustomerId(inputCustomer.value)" class="btn btn-secondary" type="button">
                             <i class="fa fa-search"></i>
                         </button>
-                    </span>
-                </div>
-            </form>
+                    </span> -->
+                    <form role="form">
+                        <fieldset class="form-group">
+                            <select #selGroup (change)="onGroupSelect(selGroup.value)" class="selectbox form-control">
+                                <option *ngFor="let item of listProduct" [value]="item.id">{{item.id}} {{item.Type}}</option>
+                            </select>
+                        </fieldset>
+                    </form>
+                    
+              
         </div>
         <div class="col-lg-6 col-md-2 col-xs-12"></div>
     </div>
@@ -28,18 +34,18 @@
         <div class="col-md-12">
             <div class="card mb-3">
                 <div class="card-header">
-                    Offer Details
+                    Offer Details : {{selItem ? selItem.Cluster: ""}} {{selItem ? selItem.name : ""}}
                     <i class="material-icons export-ico" (click)="exportFile()">file_download</i>
                 </div>
                 <div class="card-block table-responsive">
                     <mat-table #table [dataSource]="dataSource">
-                        <ng-container matColumnDef="Cluster">
+                        <!-- <ng-container matColumnDef="Cluster">
                             <mat-header-cell *matHeaderCellDef> Group </mat-header-cell>
                             <mat-cell *matCellDef="let element"> {{element.Cluster}}</mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="name">
-                            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                        </ng-container> -->
+                        <ng-container matColumnDef="CustId">
+                            <mat-header-cell *matHeaderCellDef> Customer ID </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.CustId}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="ContAvgPred">
                             <mat-header-cell *matHeaderCellDef> ContAvgPred </mat-header-cell>

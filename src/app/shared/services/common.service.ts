@@ -17,6 +17,7 @@ export class CommonService {
     // private urlEndPoint:string = "http://localhost:5000/api";
     // private urlEndPoint:string = "https://sparklersapi.herokuapp.com/api";
     private urlEndPoint: string = "http://ec2-13-126-33-137.ap-south-1.compute.amazonaws.com:2323"
+    private _customerList:any;
 
     constructor(private http: Http) { }
 
@@ -144,5 +145,21 @@ export class CommonService {
         });
         FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
     }
+
+    public setCusomersList(list:any){
+        this._customerList = list;
+    }
+
+    public getCustomer(id:string):any{
+        let len = this._customerList.length;
+        for(let i=0;i<len;i++){
+            let c:any = this._customerList[i];
+            if(c.id == id) {
+                return c;
+            }
+        }
+        return null;
+    }
+   
 
 }

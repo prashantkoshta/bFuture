@@ -20,9 +20,9 @@ export class MerchantComponent implements OnInit {
         this.gridData = [];
         this.displayedColumns = [
             "id",
-            "Name",
             "Type",
-            "SubType"
+            "SubType",
+            "Name",
             ];
     }
 

@@ -28,7 +28,7 @@
                 <div class="card mb-12">
                     <ng-template [ngIf]="boolShow">
                         <div class="card-header">
-                                Customer {{titleName}}
+                                Customer {{titleName}}  : {{customerObj?customerObj.Name:""}}
                         </div>
 
                         <div class="card-block">
@@ -46,10 +46,10 @@
     </div>
 
 
-    <div>
+    <!-- <div> -->
             <!-- <div class="row">
             <div class="col col-sm-6"> -->
-            <div class="overlay" [hidden]="!visiblePopup">
+            <!-- <div class="overlay" [hidden]="!visiblePopup">
                 <div class="overlay-body">
                     <i class="material-icons close" (click)="triggerPopup(false)">close</i>
                     <h2 class="heading">Merchants</h2>
@@ -351,6 +351,6 @@
                 </div>
     
                 <div class='shim'></div>
-            </div>
+            </div> -->
 
-</div>
+<!-- </div> -->

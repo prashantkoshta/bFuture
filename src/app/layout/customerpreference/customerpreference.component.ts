@@ -12,6 +12,7 @@ import { CommonService } from "../../shared/services/common.service";
 export class CustomerPreferenceComponent implements OnInit {
     public boolShow:boolean = false;
     public visiblePopup:boolean = false;
+    public customerObj:any;
     // bar chart
     public barChartOptions: any = {
         scaleShowVerticalLines: false,
@@ -79,7 +80,9 @@ export class CustomerPreferenceComponent implements OnInit {
             ref.barChartLegend = true;
             ref.barChartData = value["data"];
             ref.boolShow = true;
-         });
+        });
+
+        this.customerObj = this._commonService.getCustomer(custtomerId);
     }
     
     public triggerPopup(bool):void{
