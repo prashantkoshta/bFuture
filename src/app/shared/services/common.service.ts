@@ -16,7 +16,7 @@ const EXCEL_EXTENSION = '.xlsx';
 export class CommonService {
     // private urlEndPoint:string = "http://localhost:5000/api";
     // private urlEndPoint:string = "https://sparklersapi.herokuapp.com/api";
-    private urlEndPoint: string = "http://ec2-13-126-33-137.ap-south-1.compute.amazonaws.com:2323"
+    private urlEndPoint: string = "http://ec2-13-126-33-137.ap-south-1.compute.amazonaws.com:2023";
     private _customerList:any;
 
     constructor(private http: Http) { }
@@ -28,7 +28,7 @@ export class CommonService {
     }
 
     public fetchData(apiName: string, param: object, methodType: string, mapperid: string = null): Observable<object> {
-        // let url:string="http://ec2-13-126-33-137.ap-south-1.compute.amazonaws.com:2323/Customer";
+        // let url:string="http://ec2-13-126-33-137.ap-south-1.compute.amazonaws.com:2023/Customer";
         let service = this.http
             .get(this.urlEndPoint + apiName)
             // .get(url)
